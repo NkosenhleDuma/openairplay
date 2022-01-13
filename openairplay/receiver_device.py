@@ -5,8 +5,8 @@ import plistlib
 import requests
 import zeroconf
 
-from . import log
-from .utils import SimpleRepr
+import log
+from utils import SimpleRepr
 
 
 class AirplayFeatures(Flag):

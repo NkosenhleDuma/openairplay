@@ -2,7 +2,7 @@
 from functools import wraps
 import inspect
 
-from . import log
+import log
 
 
 class SimpleRepr(object):

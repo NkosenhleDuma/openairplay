@@ -3,8 +3,8 @@
 
 import sys
 
-from . import log
-from .receiver_device import AirplayReceiver
+import log
+from receiver_device import AirplayReceiver
 
 log.setLevel(log.DEBUG)
 log.debug("Debugging enabled.")
@@ -13,8 +13,8 @@ log.debug("Python version: " + sys.version)
 
 # Qt GUI stuff
 try:
-    from PyQt5 import QtCore, QtGui, QtWidgets
-    from PyQt5.QtCore import QSettings
+    from PySide6 import QtCore, QtGui, QtWidgets
+    from PySide6.QtCore import QSettings
 except ImportError:
     print("There was an error importing the Qt python3 libraries,")
     print("These are required by to operate this program.")
@@ -22,7 +22,7 @@ except ImportError:
     sys.exit("Could not import Python3 Qt Libraries.")
 
 # Airplay Things:
-from . import discovery
+import discovery
 
 class Window(QtWidgets.QWidget):
     def __init__(self):
@@ -281,10 +281,12 @@ class Window(QtWidgets.QWidget):
 if __name__ == '__main__':
 
     app = QtWidgets.QApplication(['Open Airplay'])
+    # app.setWindowIcon(None)
 
-    if not QtWidgets.QSystemTrayIcon.isSystemTrayAvailable():
-        QtWidgets.QMessageBox.critical(None, "Systray", "I couldn't detect any system tray on this system.")
-        sys.exit(1)
+
+    # if not QtWidgets.QSystemTrayIcon.isSystemTrayAvailable():
+    #     QtWidgets.QMessageBox.critical(None, "Systray", "I couldn't detect any system tray on this system.")
+    #     sys.exit(1)
 
     QtWidgets.QApplication.setQuitOnLastWindowClosed(False)
 

@@ -8,10 +8,10 @@ except ImportError:
     print("Please ensure you have it installed.")
     sys.exit("Could not find zeroconf.")
 
-from PyQt5.QtCore import QObject, pyqtSignal
+from PySide6.QtCore import QObject, Signal
 
-from . import log, utils
-from .receiver_device import AirplayReceiver, AirplayFeatures
+import log, utils
+from receiver_device import AirplayReceiver, AirplayFeatures
 
 
 # global airplayReceivers
@@ -26,8 +26,8 @@ from .receiver_device import AirplayReceiver, AirplayFeatures
 # browser = None
 
 class AirplayServiceListener(QObject):
-    receiver_added = pyqtSignal([AirplayReceiver])
-    receiver_removed = pyqtSignal([AirplayReceiver])
+    receiver_added = Signal([AirplayReceiver])
+    receiver_removed = Signal([AirplayReceiver])
 
     def __init__(self):
         self.ZC = zeroconf.Zeroconf()
